@@ -75,7 +75,9 @@ contract DDUnion is ERC721Enumerable, Ownable {
     function withdraw(address payable _to) external payable onlyOwner{
         uint balance = address(this).balance;
         require(balance > 0, "No ethers available");
-        _to.transfer(balance);
+        // _to.transfer(balance); Became obsolete now after May 2021
+        (bool success, ) = (_to).call{value: balance}("");
+        require(success, "Transfer failed.");
     }
 
 }
