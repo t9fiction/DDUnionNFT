@@ -18,7 +18,7 @@ contract DDUnion is ERC721Enumerable, Ownable {
     string public baseTokenURI;
 
     // Constructor
-    constructor(string memory baseURI) ERC721("DADDU UNION", "DDU") {
+    constructor(string memory baseURI) ERC721("DADDU UNION", "DDN") {
         setBaseURI(baseURI);
     }
 
@@ -72,10 +72,10 @@ contract DDUnion is ERC721Enumerable, Ownable {
         return tokenId;
     }
 
-    function withdraw() external payable onlyOwner{
+    function withdraw(address payable _to) external payable onlyOwner{
         uint balance = address(this).balance;
         require(balance > 0, "No ethers available");
-        transfer
+        _to.transfer(balance);
     }
 
 }
