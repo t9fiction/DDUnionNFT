@@ -14,6 +14,7 @@ async function main() {
   // await hre.run('compile');
 
   // We get the contract to deploy
+  const baseTokenURI = "ipfs://Qmed9d68EAu5LUyA4sUj3PeVyfq4mzn8JRZNCt7bQg5ckT/";
   const DDUnion = await hre.ethers.getContractFactory("DDUnion");
   const daddu = await DDUnion.deploy("Hello, Hardhat!");
 
