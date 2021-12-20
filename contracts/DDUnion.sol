@@ -37,8 +37,8 @@ contract DDUnion is ERC721Enumerable, Ownable {
         uint256 totalMinted = _tokenIds.current();
         require(totalMinted.add(_reserve) <= MAX_SUPPLY, "Not Enough NFTs available");
         for (uint256 i = 0; i < _reserve; i++) {
-            totalMinted = totalMinted+i;
             _mint(msg.sender, totalMinted);
+            totalMinted = totalMinted++;
             _tokenIds.increment();
             // _mintSingleNFT();
         }
@@ -52,8 +52,8 @@ contract DDUnion is ERC721Enumerable, Ownable {
         require(msg.value >= PRICE.mul(_count),"Not enough Ether");
 
         for (uint256 i = 0; i < _count; i++) {
-            totalMinted = totalMinted+i;
             _mint(msg.sender, totalMinted);
+            totalMinted = totalMinted++;
             _tokenIds.increment();
             // _mintSingleNFT();
         }
@@ -72,6 +72,7 @@ contract DDUnion is ERC721Enumerable, Ownable {
         return tokenId;
     }
 
+    // Withdrawing ether to wallet of owner
     function withdraw(address payable _to) external payable onlyOwner{
         uint balance = address(this).balance;
         require(balance > 0, "No ethers available");
