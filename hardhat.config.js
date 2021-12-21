@@ -22,8 +22,8 @@ const PRIVATE_KEY = process.env["TEST_PRIVATE_KEY"];
 module.exports = {
   solidity: "0.8.0",
   networks: {
-    ropsten: {
-      url: "https://ropsten.infura.io/v3/8f0d7851dd8e4b8c80bcca17a3b17760",
+    rinkeby: {
+      url: "https://rinkeby.infura.io/v3/8f0d7851dd8e4b8c80bcca17a3b17760",
       accounts: [`0x${PRIVATE_KEY}`]
     }
   }
