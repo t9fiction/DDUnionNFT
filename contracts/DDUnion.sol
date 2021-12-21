@@ -33,7 +33,7 @@ contract DDUnion is ERC721Enumerable, Ownable {
     }
 
     // Function to reserver NFT by the owner
-    function reserveDDU(uint _reserve) public onlyOwner {
+    function reserveDDU(uint _reserve) public payable onlyOwner {
         uint256 totalMinted = _tokenIds.current();
         require(totalMinted.add(_reserve) <= MAX_SUPPLY, "Not Enough NFTs available");
         for (uint256 i = 0; i < _reserve; i++) {
